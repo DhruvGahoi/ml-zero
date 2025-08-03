@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib . pyplot as plt
 
 # Here we are making a basic Linear Regression Model
 
@@ -51,3 +52,9 @@ print("\n --- Training Complete ---")
 print(f"Final Loss: {loss_history[-1]:.2f}")
 print(f"Optimal parameters: m = {m:.2f}, b = {b:.2f}")
 
+
+plt.plot(loss_history)
+plt.title("Loss Curve during Training")
+plt.xlabel("Epoch")
+plt.ylabel("Mean Squared Error")
+plt.show()
