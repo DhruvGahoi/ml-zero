@@ -14,13 +14,13 @@ def loss(y_true, y_pred):
     return -np.mean(y_true * np.log(y_pred) + (1 - y_true) * np.log(1 - y_pred))
 
 def update(X, y_true, y_pred, m, b, learning_rate):
-    dm = np.mean(X * (y_true - y_pred))
-    db = np.mean(y_true - y_pred)
+    dm = np.mean(X * (y_pred - y_true))  # Correct gradient
+    db = np.mean(y_pred - y_true)
 
-    new_m = learning_rate * dm
-    new_b = learning_rate * db
+    m = m - learning_rate * dm          # Subtract to minimize loss
+    b = b - learning_rate * db
 
-    return new_m, new_b
+    return m, b
 
 X = np.array([1, 2, 3, 4, 5])
 y_true = np.array([0, 0, 0, 1, 1])
